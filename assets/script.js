@@ -25,6 +25,8 @@ var getMovieApi = function(){
                 console.log(data)
             })
         })
+
+        getMovieApi();
     }
 
 
