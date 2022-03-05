@@ -1,14 +1,18 @@
-var reviewsContainerEl = document.querySelector(".search-container")
-var movieInput = document.querySelector("#input-field")
-var movieFormEl = document.querySelector("#movieform")
+var reviewsContainerEl = document.querySelector(".display-reviews");
+var movieInput = document.querySelector("#input-field");
+var movieFormEl = document.querySelector("#movieform");
+var submitbtnEl = document.querySelector("#search-btn");
 
-var getMovieApi = function () {
+var getMovieApi = function (event) {
+  event.preventDefault();
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
-
-  fetch("https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput)
+  console.log(movieInput.value);
+  fetch(
+    "https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput.value
+  )
     .then(function (response) {
       // console.log(response)
       return response.json();
@@ -16,7 +20,7 @@ var getMovieApi = function () {
 
     .then(function (moviedata) {
       //i want to nest the id var instead of tt1375666
-      console.log(moviedata)
+      console.log(moviedata);
       if (moviedata.results != null) {
         var id = moviedata.results[0].id;
 
@@ -29,36 +33,27 @@ var getMovieApi = function () {
             return response.json();
           })
           .then(function (reviewData) {
-              reviewsContainerEl=``
-            for(var i = 0; i < reviewData.items.length; i++){
-                if( i <= 5){
-                    //insert back tiks in here 
-                    // reviewsQuery = `<div class="review">
-                    // <h2 class="username">User: ${reviewData.items[i].username} </h2>
-                    // <h3 class="username">User: ${reviewData.items[i].title} </h3>
-                    //<a class="review-text>" ${reviewData.items[i].content}</a>
-                    //</div>`
-                    console.log(reviewData)
-                }else{
-                    return
-                }
+            var reviewsQuery = ``;
+            for (var i = 0; i < reviewData.items.length; i++) {
+              if (i <= 5) {
+                //insert back tiks in here
+                reviewsQuery += `
+                   <div class="flex justify-center m-2 items-start">
+                  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+                 <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">User: ${reviewData.items[i].username}</h5>
+                <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
+                <p class="text-gray-700 text-base mb-4">${reviewData.items[i].content}</p>
+                 </div>
+                </div>`
+                console.log(reviewData);
+              }
             }
+            reviewsContainerEl.innerHTML = reviewsQuery;
             // console.log(reviewData);
           });
       }
     });
 };
-getMovieApi();
+// getMovieApi();
 
-
-
-// https://imdb-api.com/api/#SearchTitle-header
-// var requestOptions = {
-//     method: 'GET',
-//     redirect: 'follow'
-//   };
-
-//   fetch('https://imdb-api.com/en/API/SearchMovie/k_1234567/Inception 2010', requestOptions)
-//     .then(response => response.text())
-//     .then(result => console.log(result))
-//     .catch(error => console.log('error', error));
+submitbtnEl.addEventListener("click", getMovieApi);
