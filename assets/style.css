@@ -1,0 +1,14 @@
+body {
+    background-image:url("./images/background-image.jpg");
+}
+
+#main {
+    background-color: burlywood;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle;
+    
+    
+}
+
