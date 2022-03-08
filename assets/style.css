@@ -1,0 +1,39 @@
+/* main background image*/
+body {
+    background-image:url("./images/background-image.jpg");
+}
+/*main content styles*/
+#main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    vertical-align: middle; 
+    color: white;
+    
+}
+
+#search-text {
+    font-weight: 700;
+    color: white;
+}
+
+#search-btn {
+    background-color: white;
+    color: black;
+}
+/*logo*/
+nav img{
+   width: 30%;
+   margin: auto;
+
+}
+
+/* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+@media screen and (max-width: 575px) {
+    nav img{
+      /* this will be applied on any screen smaller than 575px */
+      width: 60%;
+    }
+  }
+  
+  
