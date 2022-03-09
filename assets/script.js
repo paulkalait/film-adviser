@@ -54,6 +54,8 @@ var getMovieApi = function (event) {
       }
     });
 };
+
+
 // getMovieApi();
 
 submitbtnEl.addEventListener("click", getMovieApi);
