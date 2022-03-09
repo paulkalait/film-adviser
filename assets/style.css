@@ -15,6 +15,7 @@ body {
 #search-text {
     font-weight: 700;
     color: white;
+    
 }
 
 #search-btn {
@@ -28,6 +29,15 @@ nav img{
 
 }
 
+.reviewText {
+    display: -webkit-box;
+    -webkit-line-clamp: 4; 
+    -webkit-box-orient:vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    
+  }
+
 /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
 @media screen and (max-width: 575px) {
     nav img{
@@ -36,4 +46,9 @@ nav img{
     }
   }
   
+  .searchDiv {
+      display:flex;
+      align-items:center;
+      justify-content: center;
+  }
   
