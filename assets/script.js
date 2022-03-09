@@ -11,7 +11,7 @@ var getMovieApi = function (event) {
   };
   console.log(movieInput.value);
   fetch(
-    "https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput.value
+    "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
   )
     .then(function (response) {
       // console.log(response)
@@ -27,7 +27,7 @@ var getMovieApi = function (event) {
         console.log(moviedata);
         // var id = results[0].id
         //id = is this
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_jn3i9qrj/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
@@ -38,10 +38,11 @@ var getMovieApi = function (event) {
               if (i <= 5) {
                 //insert back tiks in here
                 reviewsQuery += `
-                   <div class="flex justify-center m-2 items-start">
-                  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
+                   <div class="flex justify-center m-2 items-start ">
+                  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm ">
                  <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">User: ${reviewData.items[i].username}</h5>
                 <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
+                <img class="images" src="${moviedata.results[i].image}"/>
                 <p class="text-gray-700 text-base mb-4 reviewText">${reviewData.items[i].content}</p>
                  </div>
                 </div>`
