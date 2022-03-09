@@ -42,6 +42,7 @@ var getMovieApi = function (event) {
                   <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm">
                  <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">User: ${reviewData.items[i].username}</h5>
                 <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
+                <img class="text-gray-900 text-xl leading-tight font-medium mb-2" src="${moviedata.results[i].image}"/>
                 <p class="text-gray-700 text-base mb-4 reviewText">${reviewData.items[i].content}</p>
                  </div>
                 </div>`
