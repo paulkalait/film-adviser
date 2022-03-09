@@ -24,7 +24,7 @@ To install the project, you need to use git clone and git pull from the main bra
 ## Usage 
 
 Upon page load, the user will see the image below is how the page should appear. The user will see the Film Advisor logo and beneath a interactive search bar. 
-<img src="" alt="image of Film Advisor"/>
+<img src="https://github.com/paulkalait/film-adviser/blob/feature/index2/assets/images/Home.png" alt="image of Film Advisor"/>
 
 When the user inputs a valid movie title into the search bar they will see reviews populate as the example shows below. 
 <img src="" alt="image of reviews of a movie"/>
