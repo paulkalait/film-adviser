@@ -5,6 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
+        integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link rel="stylesheet" href="./assets/style.css" type="text/css" />
 
@@ -13,27 +16,30 @@
 </head>
 
 <body>
+    <!-- search container-->
+    <section id="main" class="flex justify-center py-24 px-6 ">
     <nav>
         <img src="./assets/images/film-advisor-logo-01.png" alt="film advisor logo"></a>
     </nav>
      <!-- search container-->
     <section id="main">
         <!-- search header-->
-        <form id="movieform">
-        <label class="search-text">Search for film and see the reviews:</label>
-        <!-- search input-->
-        <div class="search-container">
-            <input id="input-field" type="text" placeholder="Search a film here">
-            <button id="search-btn">Search</button>
-        </div>
-        <div class="flex flex-wrap display-reviews">
-        </div>
-         </form>
-
+        <form id="movieform" class="w-full max-w-md">
+            <label class="search-text text-lg">Search for film and see the reviews:</label>
+            <!-- search input-->
+            <div class="search-container">
+                <input id="input-field" type="text" placeholder="Search a film here"
+                    class="w-full border border-gray-300 px-3 py-2 rounded-2xl shadow-sm">
+                <button class="rounded-full border border-gray-300 w-full btn btn-prymary" id="search-btn">Search</button>
+            </div>
+            <div class="flex flex-wrap display-reviews">
+            </div>
+        </form>
+        
     </section>
-    
+
     <!-- script here-->
-     <script src="./assets/script.js"></script>
+    <script src="./assets/script.js"></script>
 </body>
 
 </html>
