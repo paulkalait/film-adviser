@@ -72,9 +72,19 @@ nav img{
   }
 
   #myBtn{
-      color: pink;
 
-  }
+    color: white;
+    background-color: black;
+    margin-top: 10px;
+    padding: 5px;
+    width: 100%;
+    font-weight: 700;
+    letter-spacing: 1px;
+    border-radius: 20px;
+
+}
+=======
+ 
   
   /* Modal Content/Box */
   .modal-content {
