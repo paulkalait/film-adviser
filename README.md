@@ -6,7 +6,7 @@ For this collaborative project, our task was to create an application that solve
 
 Our group started out by creating a repository on github and we each divided tasks to work on and created our own feature branches within the develop branch. We built out the html with a background image that correlated with the project concept, included a logo to represent our title and a search bar for the user to interact with. We chose Tailwind for our css framework which assisted with styling/structuring and bringing the page to life. Next for our API's we used IMBD which allowed us to fetch reviews for any film. 
 
-Overall this project was a great window into the world of collaboration among developers. One of our biggest challenges was getting used to working with git as a group and making sure everyones files were aligned and up to date. In the end, it was rewarding to see each of our skills come together to create <a href ="https://paulkalait.github.io/film-adivser/"> Film Advisor.</a> 
+Overall this project was a great window into the world of collaboration among developers. One of our biggest challenges was getting used to working with git as a group and making sure everyones files were aligned and up to date. In the end, it was rewarding to see each of our skills come together to create <a href ="https://paulkalait.github.io/film-adviser/"> Film Advisor.</a> 
 
 ## Table of Contents 
 
