@@ -54,7 +54,11 @@ var getMovieApi = function (event) {
                  <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">User: ${reviewData.items[i].username}</h5>
                 <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
                 <img class="images" src="${moviedata.results[i].image}"/>
+
                 <button id="myBtn">READ REVIEWS</button>
+=======
+                
+
                       <div id="myModal" class="modal">
                       <div class="modal-content">
                       <span class="close">&times;</span>

@@ -72,6 +72,7 @@ nav img{
   }
 
   #myBtn{
+
     color: white;
     background-color: black;
     margin-top: 10px;
@@ -82,6 +83,8 @@ nav img{
     border-radius: 20px;
 
 }
+=======
+ 
   
   /* Modal Content/Box */
   .modal-content {
