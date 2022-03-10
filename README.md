@@ -27,7 +27,7 @@ Upon page load, the user will see the image below is how the page should appear.
 <img src="https://github.com/paulkalait/film-adviser/blob/feature/index2/assets/images/Home.png" alt="image of Film Advisor"/>
 
 When the user inputs a valid movie title into the search bar they will see reviews populate as the example shows below. 
-<img src="https://github.com/paulkalait/film-adviser/blob/feature/index2/assets/images/Home2.png" alt="image of reviews of a movie"/>
+<img src="https://github.com/paulkalait/film-adviser/blob/feature/index2/assets/images/Home3.png" alt="image of reviews of a movie"/>
 
 
 ## Credits
