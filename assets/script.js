@@ -55,19 +55,18 @@ var getMovieApi = function (event) {
                 <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
                 <img class="images" src="${moviedata.results[i].image}"/>
 
-                <button id="myBtn">READ REVIEWS</button>
-=======
-                
+                <div class="flex items-center justify-center h-full">
+                <button class="py-2 px-4  text-white rounded " id= "myBtn" onclick="toggleModal()">READ REVIEWS</button>
+              </div>
 
-                      <div id="myModal" class="modal">
-                      <div class="modal-content">
-                      <span class="close">&times;</span>
-                      <p class="text-gray-700 text-base mb-4 reviewText">${reviewData.items[i].content}</p>
-                  </div>
-                    </div>
+                
+                      
+                 
                  </div>
                     </div>
+                   
                     ` 
+                    document.querySelector(".description").innerHTML = reviewData.items[i].content
                 console.log(reviewData);
               }
             }
@@ -77,6 +76,12 @@ var getMovieApi = function (event) {
       }
     });
 };
+
+
+//modal
+function toggleModal() {
+  document.getElementById('modal').classList.toggle('hidden')
+}
 
 
 // getMovieApi();
@@ -96,4 +101,4 @@ var getMovieApi = function (event) {
 //     modal.style.display = "none";
 //   }
 // }
-submitbtnEl.addEventListener("click", getMovieApi);
+movieFormEl.addEventListener("click", getMovieApi);

@@ -83,8 +83,12 @@ nav img{
     border-radius: 20px;
 
 }
-=======
- 
+
+.description {
+  color: black;
+  text-align: left;
+}
+
   
   /* Modal Content/Box */
   .modal-content {
