@@ -56,7 +56,7 @@ var getMovieApi = function (event) {
                 <img class="images" src="${moviedata.results[i].image}"/>
 
                 <div class="flex items-center justify-center h-full">
-                <button class="py-2 px-4  text-white rounded " id= "myBtn" onclick="toggleModal()">READ REVIEWS</button>
+                <button class="py-2 px-4  text-white rounded reviewBtn " id= "myBtn" data-i=${i} data-description="${reviewData.items[i].content}" >READ REVIEWS</button>
               </div>
 
                 
@@ -65,13 +65,24 @@ var getMovieApi = function (event) {
                  </div>
                     </div>
                    
-                    ` 
-                    document.querySelector(".description").innerHTML = reviewData.items[i].content
-                console.log(reviewData);
+                    `
+
               }
             }
             reviewsContainerEl.innerHTML = reviewsQuery;
             // console.log(reviewData);
+
+
+            
+            var reviewBtn = document.querySelectorAll(".reviewBtn")
+            for (var i = 0; i < reviewBtn.length; i++) {
+              reviewBtn[i].addEventListener("click", function () {
+                document.getElementById('modal').classList.toggle('hidden')
+              //  var i = this.getAttribute("data-i")
+
+                document.querySelector(".description").innerHTML = this.getAttribute("data-description")
+              })
+            }
           });
       }
     });
@@ -79,8 +90,12 @@ var getMovieApi = function (event) {
 
 
 //modal
-function toggleModal() {
+function toggleModal(event) {
   document.getElementById('modal').classList.toggle('hidden')
+  var i = this.getAttribute("data-i")
+
+  document.querySelectorAll(".description")[i].innerHTML = this.getAttribute("data-description")
+
 }
 
 
