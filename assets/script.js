@@ -2,6 +2,7 @@ var reviewsContainerEl = document.querySelector(".display-reviews");
 var movieInput = document.querySelector("#input-field");
 var movieFormEl = document.querySelector("#movieform");
 var submitbtnEl = document.querySelector("#search-btn");
+var searchHistoryResults = []
 
 // Get the modal
 //var modal = document.querySelector("#myModal");
@@ -98,22 +99,16 @@ function toggleModal(event) {
 
 }
 
+var searchHistory = function() {
+  for (var i = searchHistoryResults.lenght - 1; i >= 0; i--) {
+    var button = document.createElement("button")
+    button.setAttribute('type', 'button')
+    button.classList.add('history-btn', 'btn-history')
+    button.setAttribute('data-search', searchHistoryResults[i])
+    button.textContent = searchHistoryResults[i]
+    searchHistory.append(button)
+}
+}
 
-// getMovieApi();
-// When the user clicks on the button, open the modal
-//btn.onclick = function() {
-//  modal.style.display = "block";
-// }
 
-// When the user clicks on <span> (x), close the modal
-// span.onclick = function() {
-//   modal.style.display = "none";
-// }
-
-// When the user clicks anywhere outside of the modal, close it
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none";
-//   }
-// }
 movieFormEl.addEventListener("click", getMovieApi);
