@@ -22,7 +22,7 @@ var getMovieApi = function (event) {
   };
   console.log(movieInput.value);
   fetch(
-    "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
+    "https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput.value
   )
     .then(function (response) {
       // console.log(response)
@@ -38,7 +38,7 @@ var getMovieApi = function (event) {
         console.log(moviedata);
         // var id = results[0].id
         //id = is this
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_jn3i9qrj/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
