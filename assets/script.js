@@ -56,9 +56,6 @@ var getMovieApi = function (event) {
                 <img class="images" src="${moviedata.results[i].image}"/>
 
                 <button id="myBtn">READ REVIEWS</button>
-=======
-                
-
                       <div id="myModal" class="modal">
                       <div class="modal-content">
                       <span class="close">&times;</span>
@@ -79,7 +76,7 @@ var getMovieApi = function (event) {
 };
 
 
-// getMovieApi();
+
 // When the user clicks on the button, open the modal
 //btn.onclick = function() {
 //  modal.style.display = "block";
@@ -96,4 +93,5 @@ var getMovieApi = function (event) {
 //     modal.style.display = "none";
 //   }
 // }
+
 submitbtnEl.addEventListener("click", getMovieApi);
