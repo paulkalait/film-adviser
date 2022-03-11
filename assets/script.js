@@ -2,8 +2,8 @@ var reviewsContainerEl = document.querySelector(".display-reviews");
 var movieInput = document.querySelector("#input-field");
 var movieFormEl = document.querySelector("#movieform");
 var submitbtnEl = document.querySelector("#search-btn");
-var searchHistoryResults = []
-
+var movieArray = []
+var movieContainer = document.getElementById("search-history")
 // Get the modal
 //var modal = document.querySelector("#myModal");
 
@@ -74,12 +74,12 @@ var getMovieApi = function (event) {
             // console.log(reviewData);
 
 
-            
+
             var reviewBtn = document.querySelectorAll(".reviewBtn")
             for (var i = 0; i < reviewBtn.length; i++) {
               reviewBtn[i].addEventListener("click", function () {
                 document.getElementById('modal').classList.toggle('hidden')
-              //  var i = this.getAttribute("data-i")
+                //  var i = this.getAttribute("data-i")
 
                 document.querySelector(".description").innerHTML = this.getAttribute("data-description")
               })
@@ -99,16 +99,22 @@ function toggleModal(event) {
 
 }
 
-var searchHistory = function() {
-  for (var i = searchHistoryResults.lenght - 1; i >= 0; i--) {
-    var button = document.createElement("button")
-    button.setAttribute('type', 'button')
-    button.classList.add('history-btn', 'btn-history')
-    button.setAttribute('data-search', searchHistoryResults[i])
-    button.textContent = searchHistoryResults[i]
-    searchHistory.append(button)
+
+var searchHistory = function () {
+
+  localStorage.setItem("citiies", JSON.stringify(movieArray));
+  
+  for (var i = 0; i < movieArray.length; i++) {
+    var pastMovies = document.createElement("button");
+    pastMovies.classList.add("rounded-lg " )
+    pastMovies.setAttribute('data-name', movieArray[i])
+    pastMovies.className = "list-of-movies"
+    pastMovies.textContent = movieArray[i]
+    movieContainer.appendChild(pastMovies);
+  }
 }
-}
+
+
 
 
 movieFormEl.addEventListener("click", getMovieApi);
