@@ -4,16 +4,56 @@ var movieFormEl = document.querySelector("#movieform");
 var submitbtnEl = document.querySelector("#search-btn");
 var movieArray = []
 var movieContainer = document.getElementById("search-history")
-// Get the modal
-//var modal = document.querySelector("#myModal");
-
-// Get the button that opens the modal
-//var btn = document.querySelector("#myBtn");
-
-// Get the <span> element that closes the modal
-//var span = document.querySelector(".close")[0];
 
 
+//local storage function starts
+var movieArray = JSON.parse(localStorage.getItem("movies")) || []
+var searchHistory = function () {
+
+  var i = 0
+  if(movieArray.length === 0) {
+    movieArray = []
+  }
+
+  if(!movieArray.includes(movieInput.value)) {
+    movieArray.push(movieInput.value)
+    localStorage.setItem("movies", JSON.stringify(movieArray));
+  }
+  for (var i = 0; i < movieArray.length; i++) {
+    var pastMovies = document.createElement("button");
+    pastMovies.classList.add("rounded-lg")
+    pastMovies.setAttribute('data-name', movieArray[i])
+    pastMovies.className = "list-of-movies"
+    pastMovies.textContent = movieArray[i]
+    movieContainer.appendChild(pastMovies);
+  }
+
+  
+}
+var pastMoviesEl = document.querySelectorAll(".list-of-movies")
+for(var i = 0; i < pastMoviesEl.length; i++){
+  pastMoviesEl[i].addEventListener("click", getMovieApi);
+  pastMovieEl[i].textContent
+}
+
+var formSubmitHandlerHistory = function(event){
+
+  event.preventDefault();
+
+  btn = event.target
+  console.log(btn)
+  movieInput = btn.getAttribute("data-name")
+    
+    if (movieInput){
+      getMovieApi(movieInput);
+      movieInput.value = ""
+    }else{
+      alert("Please enter a City")
+    }
+    searchHistory();
+}
+
+//local storage function ends 
 
 var getMovieApi = function (event) {
   event.preventDefault();
@@ -23,7 +63,7 @@ var getMovieApi = function (event) {
   };
   console.log(movieInput.value);
   fetch(
-    "https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput.value
+    "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
   )
     .then(function (response) {
       // console.log(response)
@@ -39,7 +79,7 @@ var getMovieApi = function (event) {
         console.log(moviedata);
         // var id = results[0].id
         //id = is this
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_jn3i9qrj/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
@@ -87,6 +127,7 @@ var getMovieApi = function (event) {
           });
       }
     });
+    searchHistory();
 };
 
 
@@ -99,22 +140,8 @@ function toggleModal(event) {
 
 }
 
+//local storage
 
-var searchHistory = function () {
+// movieContainer.addEventListener("click",formSubmitHandlerHistory)
 
-  localStorage.setItem("citiies", JSON.stringify(movieArray));
-  
-  for (var i = 0; i < movieArray.length; i++) {
-    var pastMovies = document.createElement("button");
-    pastMovies.classList.add("rounded-lg " )
-    pastMovies.setAttribute('data-name', movieArray[i])
-    pastMovies.className = "list-of-movies"
-    pastMovies.textContent = movieArray[i]
-    movieContainer.appendChild(pastMovies);
-  }
-}
-
-
-
-
-movieFormEl.addEventListener("click", getMovieApi);
+submitbtnEl.addEventListener("click", getMovieApi);
