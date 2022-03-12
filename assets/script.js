@@ -3,12 +3,13 @@ var movieInput = document.querySelector("#input-field");
 var movieFormEl = document.querySelector("#movieform");
 var submitbtnEl = document.querySelector("#search-btn");
 var movieArray = []
-var movieContainer = document.getElementById("search-history")
+var movieContainer = document.querySelector(".search-container")
 var movieHistory = ""
-
+var historyButtons = document.querySelector(".history-buttons")
 
 //local storage function starts
 var movieArray = JSON.parse(localStorage.getItem("movies")) || []
+
 var searchHistory = function () {
 
   var i = 0
@@ -20,16 +21,16 @@ var searchHistory = function () {
     movieArray.push(movieInput.value)
     localStorage.setItem("movies", JSON.stringify(movieArray));
   }
+  console.log(movieArray)
   for (var i = 0; i < movieArray.length; i++) {
     var pastMovies = document.createElement("button");
-    pastMovies.setAttribute("style","padding: 3px; margin: 2%; font-size: 2.00vh" )
+    pastMovies.setAttribute("style","padding: 5px 15px; margin: 1.2%; font-size: 1.00rem; display: inline-block; border-radius: 25px;" )
     pastMovies.setAttribute('data-name', movieArray[i])
     pastMovies.className = "list-of-movies"
     pastMovies.textContent = movieArray[i]
-    movieContainer.appendChild(pastMovies);
+    historyButtons.appendChild(pastMovies);
   }
 
-  
 }
 
 
@@ -40,23 +41,6 @@ for(var i = 0; i < pastMoviesEl.length; i++){
 
 }
 
-
-// var formSubmitHandlerHistory = function(event){
-//   console.log("started")
-//   event.preventDefault();
-
-//   btn = event.target
-//   console.log(btn)
-//   userInput = btn.getAttribute("data-name")
-    
-//     if (userInput){
-//       getWeatherApi(userInput);
-//       cityInput.value = ""
-//     }else{
-//       alert("Please enter a City")
-//     }
-//     saveCity();
-// }
 var formSubmitHandlerHistory = function(event){
 
   event.preventDefault();
@@ -66,7 +50,11 @@ var formSubmitHandlerHistory = function(event){
   userInput = btn.getAttribute("data-name")
   console.log(userInput)
     
+  historyButtons.innerHTML = ""
   movieContainer.innerHTML = ""
+  console.log(historyButtons)
+console.log(movieArray)
+  console.log(movieContainer)
   
     if (userInput){
       getMovieApiHistory(userInput);
@@ -74,7 +62,6 @@ var formSubmitHandlerHistory = function(event){
     }else{
       alert("Please enter a Movie")
     }
-    searchHistory();
 }
 
 //local storage function ends 
@@ -88,7 +75,7 @@ var getMovieApi = function () {
   console.log(movieInput.value);
   fetch(
     // k_sm01cn32
-    "https://imdb-api.com/en/API/SearchMovie/k_sm01cn32/" + movieInput.value
+    "https://imdb-api.com/en/API/SearchMovie/k_efe222hb/" + movieInput.value
   )
     .then(function (response) {
       // console.log(response)
@@ -104,7 +91,7 @@ var getMovieApi = function () {
         console.log(moviedata);
         // var id = results[0].id
         //third key k_efe222hb
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_sm01cn32/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_efe222hb/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
@@ -155,16 +142,14 @@ var getMovieApi = function () {
     searchHistory();
 };
 
-var getMovieApiHistory = function (event) {
-  // event.preventDefault();
+var getMovieApiHistory = function (userInput) {
+  
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
-
-  console.log(event.target);
   fetch(
-    "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
+    "https://imdb-api.com/en/API/SearchMovie/k_efe222hb/" + userInput
   )
     .then(function (response) {
       // console.log(response)
@@ -180,7 +165,7 @@ var getMovieApiHistory = function (event) {
         console.log(moviedata);
         // var id = results[0].id
         //id = is this
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_efe222hb/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
@@ -242,6 +227,6 @@ function toggleModal(event) {
 
 //local storage
 
-movieContainer.addEventListener("click",formSubmitHandlerHistory)
+historyButtons.addEventListener("click",formSubmitHandlerHistory)
 
 submitbtnEl.addEventListener("click", getMovieApi);
