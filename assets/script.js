@@ -22,7 +22,7 @@ var getMovieApi = function (event) {
   };
   console.log(movieInput.value);
   fetch(
-    "https://imdb-api.com/en/API/SearchMovie/k_jn3i9qrj/" + movieInput.value
+    "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + movieInput.value
   )
     .then(function (response) {
       // console.log(response)
@@ -38,7 +38,7 @@ var getMovieApi = function (event) {
         console.log(moviedata);
         // var id = results[0].id
         //id = is this
-        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_jn3i9qrj/" + id;
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_cp05hpvo/" + id;
         fetch(reviewsApi)
           .then(function (response) {
             return response.json();
@@ -73,12 +73,12 @@ var getMovieApi = function (event) {
             // console.log(reviewData);
 
 
-            
+
             var reviewBtn = document.querySelectorAll(".reviewBtn")
             for (var i = 0; i < reviewBtn.length; i++) {
               reviewBtn[i].addEventListener("click", function () {
                 document.getElementById('modal').classList.toggle('hidden')
-              //  var i = this.getAttribute("data-i")
+                //  var i = this.getAttribute("data-i")
 
                 document.querySelector(".description").innerHTML = this.getAttribute("data-description")
               })
