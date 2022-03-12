@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://code.iconify.design/2/2.1.2/iconify.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css"
         integrity="sha512-wnea99uKIC3TJF7v4eKk4Y+lMz2Mklv18+r4na2Gn1abDRPPOeef95xTzdwGD9e6zXJBteMIhZ1+68QC5byJZw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
@@ -21,16 +22,22 @@
     <!-- search container-->
     <section id="main">
         <!-- search header-->
-        <form id="movieform" >
+        <div id="movieform" >
             <div class="searchDiv">
-                <label class="search-text text-lg">Search for film and see the reviews:</label>
+                <label class="search-text text-lg mt-1">Search for film and see the reviews:</label>
             </div>
 
             <!-- search input-->
             <div class="searchDiv">
-                <input  class="rounded-lg border border-gray-300  px-2" id="input-field" type="text" placeholder="Search a film here">
-                <button id="search-btn" class="rounded-lg border border-gray-300 w-24 px-2">Search</button>
+                <input  class=" mt-1 px-3 h-10 text-black outline-none" id="input-field" type="text" placeholder="Search a film here">
+                <button id="search-btn" class="  mt-1  w-19 h-10 px-2"><span class="iconify" data-icon="fe:search"></span>
+                </button>
             </div>
+
+            <div class="history-buttons" id="history-buttons">
+
+            </div>
+
             <div class="search-container">
             </div>
             <div class="flex flex-wrap display-reviews">
@@ -38,7 +45,7 @@
             <div class="fixed z-10 overflow-y-auto top-0 w-full left-0 hidden" id="modal">
                 <div class="flex items-center justify-center min-height-100vh pt-4 px-4 pb-20 text-center sm:block sm:p-0">
                   <div class="fixed inset-0 transition-opacity">
-                    <div class="absolute inset-0 bg-gray-900 opacity-75"/>
+                    <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
                   </div>
                   <span class="hidden sm:inline-block sm:align-middle sm:h-screen">&#8203;</span>
                   <div class="inline-block align-center bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full" role="dialog" aria-modal="true" aria-labelledby="modal-headline">
@@ -52,11 +59,13 @@
                   </div>
                 </div>
               </div>
-        </form>
+            </div>
+          </div>
+          
+         
 
     </section>
-
-    
+  
 
 
 
