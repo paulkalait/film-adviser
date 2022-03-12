@@ -36,37 +36,133 @@ var searchHistory = function () {
 var pastMoviesEl = document.querySelectorAll(".list-of-movies")
 for(var i = 0; i < pastMoviesEl.length; i++){
   // pastMovieEl[i].textContent
-  pastMoviesEl[i].addEventListener("click", getMovieApi);
+  pastMoviesEl[i].addEventListener("click", getMovieApiHistory);
 
 }
 
+
+// var formSubmitHandlerHistory = function(event){
+//   console.log("started")
+//   event.preventDefault();
+
+//   btn = event.target
+//   console.log(btn)
+//   userInput = btn.getAttribute("data-name")
+    
+//     if (userInput){
+//       getWeatherApi(userInput);
+//       cityInput.value = ""
+//     }else{
+//       alert("Please enter a City")
+//     }
+//     saveCity();
+// }
 var formSubmitHandlerHistory = function(event){
 
   event.preventDefault();
 
   var btn = event.target
   console.log(btn)
-  movieInput = btn.getAttribute("data-name")
+  userInput = btn.getAttribute("data-name")
+  console.log(userInput)
     
-    if (movieInput){
-      getMovieApi(movieInput);
+  movieContainer.innerHTML = ""
+  
+    if (userInput){
+      getMovieApiHistory(userInput);
       movieInput.value = ""
     }else{
-      alert("Please enter a City")
+      alert("Please enter a Movie")
     }
     searchHistory();
 }
 
 //local storage function ends 
 
-var getMovieApi = function (event) {
-  event.preventDefault();
+var getMovieApi = function () {
+  // event.preventDefault();
   var requestOptions = {
     method: "GET",
     redirect: "follow",
   };
-  console.log(event.target)
   console.log(movieInput.value);
+  fetch(
+    // k_sm01cn32
+    "https://imdb-api.com/en/API/SearchMovie/k_sm01cn32/" + movieInput.value
+  )
+    .then(function (response) {
+      // console.log(response)
+      return response.json();
+    })
+
+    .then(function (moviedata) {
+      //i want to nest the id var instead of tt1375666
+      console.log(moviedata);
+      if (moviedata.results != null) {
+        var id = moviedata.results[0].id;
+
+        console.log(moviedata);
+        // var id = results[0].id
+        //third key k_efe222hb
+        var reviewsApi = "https://imdb-api.com/en/API/Reviews/k_sm01cn32/" + id;
+        fetch(reviewsApi)
+          .then(function (response) {
+            return response.json();
+          })
+          .then(function (reviewData) {
+            var reviewsQuery = ``;
+            for (var i = 0; i < reviewData.items.length; i++) {
+              if (i <= 5) {
+                //insert back tiks in here
+                reviewsQuery += `
+                   <div class="flex justify-center m-2 items-start ">
+                  <div class="block p-6 rounded-lg shadow-lg bg-white max-w-sm ">
+                 <h5 class="text-gray-900 text-xl leading-tight font-medium mb-2">User: ${reviewData.items[i].username}</h5>
+                <h6 class="text-gray-900 text-xl leading-tight font-medium mb-2">Review: ${reviewData.items[i].title} </h6>
+                <img class="images" src="${moviedata.results[i].image}"/>
+
+                <div class="flex items-center justify-center h-full">
+                <button class="py-2 px-4  text-white rounded reviewBtn " id= "myBtn" data-i=${i} data-description="${reviewData.items[i].content}" >READ REVIEWS</button>
+              </div>
+
+                
+                      
+                 
+                 </div>
+                    </div>
+                   
+                    `
+
+              }
+            }
+            reviewsContainerEl.innerHTML = reviewsQuery;
+            // console.log(reviewData);
+
+
+
+            var reviewBtn = document.querySelectorAll(".reviewBtn")
+            for (var i = 0; i < reviewBtn.length; i++) {
+              reviewBtn[i].addEventListener("click", function () {
+                document.getElementById('modal').classList.toggle('hidden')
+                //  var i = this.getAttribute("data-i")
+
+                document.querySelector(".description").innerHTML = this.getAttribute("data-description")
+              })
+            }
+          });
+      }
+    });
+    searchHistory();
+};
+
+var getMovieApiHistory = function (event) {
+  // event.preventDefault();
+  var requestOptions = {
+    method: "GET",
+    redirect: "follow",
+  };
+
+  console.log(event.target);
   fetch(
     "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
   )
@@ -135,7 +231,6 @@ var getMovieApi = function (event) {
     searchHistory();
 };
 
-
 //modal
 function toggleModal(event) {
   document.getElementById('modal').classList.toggle('hidden')
@@ -149,4 +244,4 @@ function toggleModal(event) {
 
 movieContainer.addEventListener("click",formSubmitHandlerHistory)
 
-movieFormEl.addEventListener("submit", getMovieApi);
+submitbtnEl.addEventListener("click", getMovieApi);
