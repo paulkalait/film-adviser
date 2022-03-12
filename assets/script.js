@@ -23,7 +23,6 @@ var searchHistory = function () {
   for (var i = 0; i < movieArray.length; i++) {
     var pastMovies = document.createElement("button");
     pastMovies.setAttribute("style","padding: 3px; margin: 2%; font-size: 2.00vh" )
-    pastMovies.classList.add("rounded-lg")
     pastMovies.setAttribute('data-name', movieArray[i])
     pastMovies.className = "list-of-movies"
     pastMovies.textContent = movieArray[i]
@@ -32,7 +31,7 @@ var searchHistory = function () {
 
   
 }
-searchHistory();
+
 
 var pastMoviesEl = document.querySelectorAll(".list-of-movies")
 for(var i = 0; i < pastMoviesEl.length; i++){
@@ -45,7 +44,7 @@ var formSubmitHandlerHistory = function(event){
 
   event.preventDefault();
 
-  btn = event.target
+  var btn = event.target
   console.log(btn)
   movieInput = btn.getAttribute("data-name")
     
@@ -148,6 +147,6 @@ function toggleModal(event) {
 
 //local storage
 
-// movieContainer.addEventListener("click",formSubmitHandlerHistory)
+movieContainer.addEventListener("click",formSubmitHandlerHistory)
 
 movieFormEl.addEventListener("submit", getMovieApi);
