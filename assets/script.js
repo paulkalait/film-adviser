@@ -4,6 +4,7 @@ var movieFormEl = document.querySelector("#movieform");
 var submitbtnEl = document.querySelector("#search-btn");
 var movieArray = []
 var movieContainer = document.getElementById("search-history")
+var movieHistory = ""
 
 
 //local storage function starts
@@ -21,6 +22,7 @@ var searchHistory = function () {
   }
   for (var i = 0; i < movieArray.length; i++) {
     var pastMovies = document.createElement("button");
+    pastMovies.setAttribute("style","padding: 3px; margin: 2%; font-size: 2.00vh" )
     pastMovies.classList.add("rounded-lg")
     pastMovies.setAttribute('data-name', movieArray[i])
     pastMovies.className = "list-of-movies"
@@ -30,10 +32,13 @@ var searchHistory = function () {
 
   
 }
+searchHistory();
+
 var pastMoviesEl = document.querySelectorAll(".list-of-movies")
 for(var i = 0; i < pastMoviesEl.length; i++){
+  // pastMovieEl[i].textContent
   pastMoviesEl[i].addEventListener("click", getMovieApi);
-  pastMovieEl[i].textContent
+
 }
 
 var formSubmitHandlerHistory = function(event){
@@ -61,6 +66,7 @@ var getMovieApi = function (event) {
     method: "GET",
     redirect: "follow",
   };
+  console.log(event.target)
   console.log(movieInput.value);
   fetch(
     "https://imdb-api.com/en/API/SearchMovie/k_cp05hpvo/" + movieInput.value
@@ -144,4 +150,4 @@ function toggleModal(event) {
 
 // movieContainer.addEventListener("click",formSubmitHandlerHistory)
 
-submitbtnEl.addEventListener("click", getMovieApi);
+movieFormEl.addEventListener("submit", getMovieApi);
