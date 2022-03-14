@@ -145,3 +145,12 @@ nav img{
     text-decoration: none;
     cursor: pointer;
   }
+
+
+  /* MEDIA QUERY FOR MOBILE PHONES AND SMALLER */
+@media screen and (max-width: 575px) {
+  .list-of-movies btn {
+    
+  }
+}
+
